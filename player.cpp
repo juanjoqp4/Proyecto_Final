@@ -7,6 +7,7 @@ Player :: Player( )
     jugador->setPixmap(pp);
     jugador->setPos(465, 500);
     jugador->setScale(0.30);
+    sell = true;
     energCons = new QTimer( );
 }
 
@@ -30,7 +31,7 @@ void Player :: keyPressEvent(QKeyEvent *event, int type){
     }
     //if(type == 1)qDebug( ) << "X : " << jugador->pos( ).x( ) << " // Y : " << jugador->pos( ).y( ) << " // ";
 
-    if(energia > 0) energia--;
+    if((energia > 0) && (event->key( ) == Qt::Key_W) || (event->key( ) == Qt::Key_A) || (event->key( ) == Qt::Key_S) || (event->key( ) == Qt::Key_D)) energia--;
 }
 
 void Player::Eat( )
@@ -39,6 +40,13 @@ void Player::Eat( )
     sopa--;
     hambre -= 20;
     civismo -= 10;
+}
+
+void Player::Buy()
+{
+    civismo -= 10;
+    sopa++;
+    dinero -= 5;
 }
 
 void Player::Tired( ){

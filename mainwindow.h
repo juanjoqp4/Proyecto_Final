@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QVector>
 
 #include "player.h"
 #include "obstacles.h"
@@ -28,13 +29,22 @@ public:
     void ActBars( );
 
 private slots:
+    void Travel( );
+    void Board( );
     void TiredInt( );
     void on_eat_released( );
+
+    void on_buysopa_released();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     Player *prot;
     Obstacles *walls;
+
+    QVector <QString> stations;
+    QTimer *traveltime, *travelstop;
+    unsigned short int actStation = 0, direction = 1, day = 1;
+    bool sell;
 };
 #endif // MAINWINDOW_H

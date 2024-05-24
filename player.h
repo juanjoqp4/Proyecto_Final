@@ -16,9 +16,11 @@ public:
     void keyPressEvent(QKeyEvent *event, int);
     void Impact( );
     void Eat( );
+    void Buy( );
 
     QGraphicsPixmapItem *jugador;
     short int energia = 100, hambre = 0, civismo = 100, estres = 0, dinero = 25, sopa = 3;
+    bool sell;
 
     QTimer *energCons;
 };
